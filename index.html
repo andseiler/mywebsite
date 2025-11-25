@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreas Seiler – Senior Full-Stack Entwickler & Projektmanager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0a0e27;
+            --secondary: #1a1f3a;
+            --accent: #00d4aa;
+            --accent-secondary: #4ecdc4;
+            --text-primary: #e8edf3;
+            --text-secondary: #a8b5c7;
+            --text-muted: #6b7a90;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --highlight: rgba(0, 212, 170, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        .header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+            align-items: start;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image-placeholder {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 20px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .header-content h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-content .title {
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-content .tagline {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            font-size: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .contact-item::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 50px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        /* Featured Projects */
+        .featured-projects {
+            display: grid;
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--highlight) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+
+        .project-role {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 600;
+            background: var(--highlight);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .project-card h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-card .company {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-card .description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+        }
+
+        .project-link::after {
+            content: '↗';
+            font-size: 18px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            font-size: 12px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tech-tag {
+            border-color: rgba(0, 212, 170, 0.3);
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(0, 212, 170, 0.2);
+        }
+
+        .timeline-item .period {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .company-name {
+            color: var(--accent);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .sidebar-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-category-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .skill-level {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .language-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .language-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .language-level {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item .degree {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .education-item .school {
+            color: var(--accent);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .education-item .year {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--highlight);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .profile-image-placeholder {
+                margin: 0 auto;
+            }
+
+            .header-content h1 {
+                font-size: 40px;
+            }
+
+            .header-content .title {
+                font-size: 20px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .project-card, .sidebar-card {
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="profile-image-placeholder">
+                AS
+            </div>
+            <div class="header-content">
+                <h1>Andreas Seiler</h1>
+                <div class="title">Senior Full-Stack Entwickler & Projektmanager</div>
+                <p class="tagline">
+                    Spezialisiert auf moderne Web-Applikationen und Business Intelligence Systeme mit über 18 Jahren Erfahrung. 
+                    Leitung komplexer Projekte von der Konzeption bis zur Produktionsreife.
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:mail@andreas-seiler.net" class="contact-item">mail@andreas-seiler.net</a>
+                    <a href="tel:+436603245617" class="contact-item">+43 660 3245617</a>
+                    <a href="tel:+491727794752" class="contact-item">+49 172 7794752</a>
+                    <a href="https://www.linkedin.com/in/andreasseiler-a32680246/" class="contact-item" target="_blank">LinkedIn</a>
+                    <span class="contact-item">Wattens, Österreich</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Main Content -->
+            <main>
+                <!-- Featured Projects -->
+                <section class="section">
+                    <h2 class="section-title">Aktuelle Projekte</h2>
+                    <div class="featured-projects">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div>
+                                    <div class="project-role">Projektmanager & Technical Lead</div>
+                                </div>
+                            </div>
+                            <h3>Evidence-Based Training Platform</h3>
+                            <div class="company">Avialytics GmbH, Heidelberg (Remote)</div>
+                            <p class="description">
+                                Leitung und Entwicklung einer hochmodernen Web-Applikation zur Erstellung und Verwaltung von 
+                                Pilotentrainings. Fokus auf intuitive Bedienung durch Trainer und robuste Offline-Funktionalität 
+                                für den Einsatz im Simulator. Verantwortlich für Architektur, technische Entscheidungen und 
+                                Teamkoordination.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">.NET 8</span>
+                                <span class="tech-tag">Vue 3</span>
+                                <span class="tech-tag">MS SQL Server</span>
+                                <span class="tech-tag">Azure CI/CD</span>
+                                <span class="tech-tag">Offline-First</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div>
+                                    <div class="project-role">Projektmanager & Technical Lead</div>
+                                </div>
+                            </div>
+                            <h3>Jumpseater Booking WebApp</h3>
+                            <div class="company">Avialytics GmbH, Heidelberg (Remote)</div>
+                            <p class="description">
+                                Projektleitung und Architektur einer innovativen Buchungsplattform für die Luftfahrtbranche. 
+                                Führung eines zweiköpfigen Entwicklerteams (Frontend & Backend). Verantwortlich für technische 
+                                Strategie, Code-Reviews, Sprint-Planung und Stakeholder-Management. Implementierung einer 
+                                skalierbaren Microservices-Architektur.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">.NET Core</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">Azure</span>
+                                <span class="tech-tag">Team Leadership</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div>
+                                    <div class="project-role">Gründer & Entwickler</div>
+                                </div>
+                            </div>
+                            <h3>SpikeTime Zeiterfassung</h3>
+                            <div class="company">Eigenes Produkt, Leipzig (Remote)</div>
+                            <p class="description">
+                                Entwicklung und Betrieb einer webbasierten Zeiterfassung für Freiberufler und Teams. 
+                                Fokus auf intuitive Bedienung ohne Schulungsaufwand und automatische Checks zur Reduzierung 
+                                von Eingabefehlern. Inklusive nativer Android und iOS Apps für mobile Zeiterfassung. 
+                                Komplette Verantwortung für Produktentwicklung, Architektur und Betrieb seit 2014.
+                            </p>
+                            <a href="https://www.spiketime.de" class="project-link" target="_blank">
+                                Projekt ansehen
+                            </a>
+                            <div class="tech-tags">
+                                <span class="tech-tag">ASP.NET Core</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Ionic</span>
+                                <span class="tech-tag">MS SQL Server</span>
+                                <span class="tech-tag">Azure CI/CD</span>
+                                <span class="tech-tag">iOS & Android</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2 class="section-title">Berufserfahrung (Auszug)</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="period">04/2024 – HEUTE</div>
+                            <h4>Projektmanager & Technical Lead</h4>
+                            <div class="company-name">Avialytics GmbH, Heidelberg (Remote)</div>
+                            <ul>
+                                <li>Projektleitung Evidence-Based Training Platform</li>
+                                <li>Technische Architektur und Entwicklung mit .NET 8 & Vue 3</li>
+                                <li>Implementierung Offline-First Funktionalität</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="period">07/2023 – 04/2024</div>
+                            <h4>Full-Stack Entwickler</h4>
+                            <div class="company-name">Avialytics GmbH, Heidelberg (Remote)</div>
+                            <ul>
+                                <li>Entwicklung iPad App für Pilotentrainings (Ionic + Vue 3)</li>
+                                <li>Enge Abstimmung mit Trainern zur App-Konzeption</li>
+                                <li>Implementierung Offline-Funktionalität für Simulator-Einsatz</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="period">10/2018 – 07/2023</div>
+                            <h4>Full-Stack Entwickler</h4>
+                            <div class="company-name">Packit GmbH, Trier (Remote)</div>
+                            <ul>
+                                <li>Entwicklung Webapplikation für Prototypenverwaltung</li>
+                                <li>Datenmodell-Design und SAP-Integration (ETL)</li>
+                                <li>ASP.NET MVC, MS SQL Server, Vue.js</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="period">01/2014 – HEUTE</div>
+                            <h4>Gründer & Entwickler</h4>
+                            <div class="company-name">SpikeTime Zeiterfassung, Leipzig (Remote)</div>
+                            <ul>
+                                <li>Entwicklung webbasierter Zeiterfassung für Freiberufler</li>
+                                <li>Android & iOS App Entwicklung</li>
+                                <li>Kompletter Tech-Stack: .NET Core, Vue.js, Ionic</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="period">04/2014 – 10/2017</div>
+                            <h4>Business Intelligence Entwickler</h4>
+                            <div class="company-name">SPRD.NET AG, Leipzig</div>
+                            <ul>
+                                <li>Data Warehouse Entwicklung und Optimierung</li>
+                                <li>Tableau, Pentaho, MySQL</li>
+                                <li>Adhoc-Analysen und Standard-Reporting</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="period">10/2007 – 09/2010</div>
+                            <h4>Business Intelligence Entwickler</h4>
+                            <div class="company-name">NTT DATA bei BMW AG, München</div>
+                            <ul>
+                                <li>Diverse BI-Projekte in Festanstellung</li>
+                                <li>Oracle 10g, Informatica PowerCenter, Cognos 8</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">18+</div>
+                        <div class="stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">11+</div>
+                        <div class="stat-label">Jahre Freelance</div>
+                    </div>
+                </div>
+
+                <!-- Core Skills -->
+                <div class="sidebar-card">
+                    <h3>Kernkompetenzen</h3>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">Backend & Datenbanken</div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>SQL / T-SQL</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>C# / .NET</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>MS SQL Server</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">Frontend</div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>JavaScript / TypeScript</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Vue.js</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Ionic / Capacitor</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Angular</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">DevOps & Tools</div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>Azure CI/CD Pipelines</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Git / Version Control</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">Business Intelligence</div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>SAP Business Objects</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Tableau</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Pentaho</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-item">
+                                <span>Data Warehousing</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="sidebar-card">
+                    <h3>Sprachen</h3>
+                    <div class="language-list">
+                        <div class="language-item">
+                            <span class="language-name">Deutsch</span>
+                            <span class="language-level">Muttersprache</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Englisch</span>
+                            <span class="language-level">Verhandlungssicher</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Französisch</span>
+                            <span class="language-level">Grundkenntnisse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="sidebar-card">
+                    <h3>Ausbildung</h3>
+                    <div class="education-item">
+                        <div class="degree">Diplom Wirtschaftsinformatiker</div>
+                        <div class="school">Berufsakademie Ravensburg</div>
+                        <div class="year">2004 – 2007</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
